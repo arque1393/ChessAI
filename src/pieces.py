@@ -1,10 +1,11 @@
-from constant import TEAM, Cost
+from constant import Team, Cost
 
 
 class Piece:
-    def __init__(self, name, team, cost, texture=None, texture_rect=None) -> None:
+    def __init__(self, name: str, team: tuple, cost: float,
+                 texture=None, texture_rect=None) -> None:
         self.name = name
-        self.TEAM = team
+        self.Team = team
         self.cost = cost
         self.texture = texture
         self.texture_rect = texture_rect
@@ -12,7 +13,7 @@ class Piece:
 
 class Pawn(Piece):
     def __init__(self, team):
-        self.direction = -1 if team == TEAM.WHITE else 1
+        self.direction = -1 if team == Team.WHITE else 1
         super().__init__("Pawn", team, Cost.PAWN)
 
 
