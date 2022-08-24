@@ -1,37 +1,27 @@
 from constant import Colour, n_COL, n_ROW, WIDTH, HEIGHT, Position
 import pygame
-
-
-class GameBackground:
-    def __init__(self) -> None:
-        pass
-
-    def show_background(self, surface):
-        for row in range(n_ROW):
-            for col in range(n_COL):
-                if (row+col) % 2:
-                    colour = Colour.DARK_BLUE
-                else:
-                    colour = Colour.LIGHT_BLUE
-                square_SIZE = WIDTH/n_ROW
-                rect = (col*square_SIZE, row*square_SIZE,
-                        square_SIZE, square_SIZE)
-                pygame.draw.rect(surface, colour, rect)
+import numpy as np
+from pieces import Piece, Pawn, Knight, Bishop, Rook, Queen, King
 
 
 class Square:
-    def __init__(self, position, piece) -> None:
+    def __init__(self, position: Position, piece: Piece = None) -> None:
         self.position = position
         self.piece = piece
 
 
 class GameBoard:
     def __init__(self) -> None:
-        self.square = []
+        self.squares = None
+        self._create()
 
     def _create(self):
-        self.square = [[Position(i, j) for i in range(n_ROW)]
-                       for j in range(n_COL)]
+        # self.square = [[Position(i, j) for i in range(n_ROW)]
+        #                for j in range(n_COL)]
+        self.squares = np.full((8, 8), Square(Position(0, 0)))
+        for i in range(8):
+            for j in range(8):
+                self.squares[i, j] = Square(Position(i, j))
 
     def _add_pieces(self):
         pass

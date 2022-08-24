@@ -1,9 +1,9 @@
 import pygame
 import sys
-
+import numpy as np
 
 from constant import *
-from game_components import GameBackground
+from game import Game
 
 
 class MainWindow:
@@ -11,7 +11,7 @@ class MainWindow:
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption("Chess Board")
-        self.game_backgroun = GameBackground()
+        self.game_backgroun = Game()
 
     def main_loop(self):
         while True:

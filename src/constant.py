@@ -1,6 +1,6 @@
 # Board Information
 from types import SimpleNamespace
-
+from collections import namedtuple
 
 WIDTH = 950
 HEIGHT = 950
@@ -17,24 +17,25 @@ Colour.DARK_GREEN = (0, 0, 0)
 Colour.LIGHT_GREEN = (0, 0, 0)
 
 
-class Position:
-    def __init__(self, row, col):
-        self.row = row
-        self.col = col
+# class Position:
+#     def __init__(self, row, col):
+#         self.row = row
+#         self.col = col
 
-
-TEAM = SimpleNamespace()
-TEAM.MY_TEAM = 1
-TEAM.OPPONENT_TEAM = -1
+Position = namedtuple("Position", ["x", "y"])
+Team = SimpleNamespace()
+Team.MY_Team = 1
+Team.OPPONENT_Team = -1
 
 
 # my_choice = choose_team()
 # if my_choice == 'Black':
-TEAM.WHITE = TEAM.OPPONENT_TEAM
-TEAM.BLACK = TEAM.MY_TEAM
+Team.WHITE = 0
+Team.BLACK = 1
 # else:
-#     TEAM.WHITE = TEAM.OPPONENT_TEAM
-#     TEAM.BLACK = TEAM.MY_TEAM
+#     Team.WHITE = Team.OPPONENT_Team
+#     Team.BLACK = Team.MY_Team
+
 
 Cost = SimpleNamespace()
 Cost.PAWN = 1.0
